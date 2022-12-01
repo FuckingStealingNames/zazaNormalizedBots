@@ -1,0 +1,9 @@
+{
+	"ChangeHealth": true,
+	"AffectCheatySkills": true,
+	"AddMoreGear": true,
+	"DontAffectFollowingBots": [
+		"Add Bot Here",
+		"Add Bot Here"
+	]
+}
