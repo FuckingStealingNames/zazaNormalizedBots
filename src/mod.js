@@ -44,7 +44,7 @@ class Mod {
 				};
 			};
 		};
-	};
+	}
 
 	static changeHealth(logger, dbBots, botType) {
 		if (dbBots[botType].health) {
@@ -97,7 +97,7 @@ class Mod {
 				dbBots[botType].health.BodyParts[0].Stomach = {"min": 150, "max": 150};
 			};
 		};
-	};
+	}
 
 	static changeGear(logger, dbBots, botType) {
 
@@ -292,8 +292,8 @@ class Mod {
 			// adjust gear chances
 			chances.equipment.ArmorVest = 100;
 		};
-	};
-};
+	}
+}
 
 	
 module.exports = { mod: new Mod() }
