@@ -16,34 +16,34 @@ class Mod {
 				if (config.DontAffectFollowingBots[botListIndex] === botType)
 				{
 					continue;
-				};
+				}
 				
 				// change health
 				if (config.ChangeHealth) {
 					Mod.changeHealth(logger, dbBots, botType);
-				};
+				}
 				
 				// remove instant bot reload & infinite stamina
 				if (config.AffectCheatySkills) {
 					if (dbBots[botType].skills.Common) {
 						dbBots[botType].skills.Common.BotReload = {"min": 0, "max": 0};
-					};
+					}
 					
 					if (dbBots[botType].difficulty) {
 						for (const difficulty in dbBots[botType].difficulty) {
 							if (dbBots[botType].difficulty[difficulty].Move) {
 								dbBots[botType].difficulty[difficulty].Move.ETERNITY_STAMINA = false;
-							};
-						};
-					};
-				};
+							}
+						}
+					}
+				}
 
 				// some bot gear changes to balance out lower health
 				if (config.AddMoreGear) {
 					Mod.changeGear(logger, dbBots, botType);
-				};
-			};
-		};
+				}
+			}
+		}
 	}
 
 	static changeHealth(logger, dbBots, botType) {
@@ -79,7 +79,7 @@ class Mod {
 						"min": 70
 					}
 				}
-			];
+			]
 	
 			// gluhkar
 			if (botType === "bossgluhar") {
@@ -87,7 +87,7 @@ class Mod {
 				//change chest and stomach HP cuz character mesh has armor vest on it
 				dbBots[botType].health.BodyParts[0].Chest =	{"min": 220, "max": 220};
 				dbBots[botType].health.BodyParts[0].Stomach = {"min": 140, "max": 140};
-			};
+			}
 	
 			// shturman
 			if (botType === "bosskojaniy") {
@@ -95,8 +95,8 @@ class Mod {
 				//change chest and stomach HP cuz character mesh has armor vest on it
 				dbBots[botType].health.BodyParts[0].Chest =	{"min": 180, "max": 180};
 				dbBots[botType].health.BodyParts[0].Stomach = {"min": 150, "max": 150};
-			};
-		};
+			}
+		}
 	}
 
 	static changeGear(logger, dbBots, botType) {
@@ -157,7 +157,7 @@ class Mod {
 			chances.equipment.ArmorVest = 100;
 			chances.equipment.TacticalVest = 100;
 			chances.mods.mod_equipment = 50;
-		};
+		}
 		
 		// shturman
 		if (botType === "bosskojaniy") {
@@ -170,7 +170,7 @@ class Mod {
 			
 			// adjust gear chances
 			chances.equipment.TacticalVest = 100;
-		};
+		}
 		
 		// sanitar
 		if (botType === "bosssanitar") {
@@ -216,7 +216,7 @@ class Mod {
 			chances.equipment.ArmorVest = 100;
 			chances.equipment.TacticalVest = 100;
 			chances.mods.mod_equipment = 70;
-		};
+		}
 		
 		// cultist priest
 		if (botType === "sectantpriest") {
@@ -238,14 +238,14 @@ class Mod {
 			// adjust gear chances
 			chances.equipment.ArmorVest = 100;
 			chances.equipment.TacticalVest = 100;
-		};
+		}
 		
 		// raiders
 		if (botType === "pmcbot") {
 
 			// adjust gear chances
 			chances.equipment.ArmorVest = 100;
-		};
+		}
 	}
 }
 
