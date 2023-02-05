@@ -1,7 +1,19 @@
 {
-	"ChangeHealth": false,
-	"AffectCheatySkills": true,
 	"AddMoreGear": true,
+	"AffectCheatySkills": {
+		"Enabled": true,
+		"CultistsHaveSiletMovement": true
+	},
+	"ChangeHealth": {
+		"Enabled": true,
+		"HealthValues": {
+			"Head": 35,
+			"Thorax": 85,
+			"Stomach": 70,
+			"Arms": 60,
+			"Legs": 65
+		}
+	},
 	"DontAffectFollowingBots": [
 		"Add Bot Here",
 		"Add Bot Here"

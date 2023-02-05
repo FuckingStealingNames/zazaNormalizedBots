@@ -9,74 +9,80 @@ class Mod {
 		
 		const config = require("../config/config.json");
 		
-		for (const botListIndex in config.DontAffectFollowingBots) {
-			for (const botType in dbBots) {
-				
-				// if bot type is in the "Dont Affect" list, drop it
-				if (config.DontAffectFollowingBots[botListIndex] === botType)
-				{
-					continue;
-				}
-				
-				// change health
-				if (config.ChangeHealth) {
-					Mod.changeHealth(logger, dbBots, botType);
-				}
-				
-				// remove instant bot reload & infinite stamina
-				if (config.AffectCheatySkills) {
-					if (dbBots[botType].skills.Common) {
-						dbBots[botType].skills.Common.BotReload = {"min": 0, "max": 0};
+		for (const botType in dbBots) {
+			// if bot type is in the "Dont Affect" list, drop it
+			if (config.DontAffectFollowingBots.includes(botType)) {
+				continue;
+			}
+			
+			// change health
+			if (config.ChangeHealth.Enabled) {
+				Mod.changeHealth(dbBots, botType, config.ChangeHealth.HealthValues);
+			}
+			
+			// remove instant bot reload & infinite stamina & silent movement
+			if (config.AffectCheatySkills.Enabled) {
+				// skills
+				if (dbBots[botType].skills.Common) {
+					dbBots[botType].skills.Common.BotReload = {"min": 0, "max": 0};
+						
+					if (botType === "sectantpriest" || botType ===  "sectantwarrior") {
+						if (config.AffectCheatySkills.CultistsHaveSiletMovement === false) {
+							dbBots[botType].skills.Common.BotSound = {"min": 0, "max": 0};
+						}
+					} else {
+						dbBots[botType].skills.Common.BotSound = {"min": 0, "max": 0};
 					}
-					
-					if (dbBots[botType].difficulty) {
-						for (const difficulty in dbBots[botType].difficulty) {
-							if (dbBots[botType].difficulty[difficulty].Move) {
-								dbBots[botType].difficulty[difficulty].Move.ETERNITY_STAMINA = false;
-							}
+				}
+			
+				// stamina
+				if (dbBots[botType].difficulty) {
+					for (const difficulty in dbBots[botType].difficulty) {
+						if (dbBots[botType].difficulty[difficulty].Move) {
+							dbBots[botType].difficulty[difficulty].Move.ETERNITY_STAMINA = false;
 						}
 					}
 				}
-
-				// some bot gear changes to balance out lower health
-				if (config.AddMoreGear) {
-					Mod.changeGear(logger, dbBots, botType);
-				}
+			}
+			
+			// some bot gear changes to balance out lower health
+			if (config.AddMoreGear) {
+				Mod.changeGear(dbBots, botType);
 			}
 		}
 	}
 
-	static changeHealth(logger, dbBots, botType) {
+	static changeHealth(dbBots, botType, healthValues) {
 		if (dbBots[botType].health) {
 			dbBots[botType].health.BodyParts = [
 				{
 					"Chest": {
-						"max": 85,
-						"min": 85
+						"max": healthValues.Thorax,
+						"min": healthValues.Thorax
 					},
 					"Head": {
-						"max": 35,
-						"min": 35
+						"max": healthValues.Head,
+						"min": healthValues.Head
 					},
 					"LeftArm": {
-						"max": 60,
-						"min": 60
+						"max": healthValues.Arms,
+						"min": healthValues.Arms
 					},
 					"LeftLeg": {
-						"max": 65,
-						"min": 65
+						"max": healthValues.Legs,
+						"min": healthValues.Legs
 					},
 					"RightArm": {
-						"max": 60,
-						"min": 60
+						"max": healthValues.Arms,
+						"min": healthValues.Arms
 					},
 					"RightLeg": {
-						"max": 65,
-						"min": 65
+						"max": healthValues.Legs,
+						"min": healthValues.Legs
 					},
 					"Stomach": {
-						"max": 70,
-						"min": 70
+						"max": healthValues.Stomach,
+						"min": healthValues.Stomach
 					}
 				}
 			]
@@ -99,7 +105,7 @@ class Mod {
 		}
 	}
 
-	static changeGear(logger, dbBots, botType) {
+	static changeGear(dbBots, botType) {
 
 		//additional constants
 		const inv = dbBots[botType].inventory;
