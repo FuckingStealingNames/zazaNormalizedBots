@@ -1,8 +1,9 @@
 {
 	"AddMoreGear": true,
-	"AffectCheatySkills": {
-		"Enabled": true,
-		"CultistsHaveSiletMovement": true
+	"RemoveCheatySkills": {
+		"BotSound": true,
+		"BotReload": true,
+		"EternityStamina": true
 	},
 	"ChangeHealth": {
 		"Enabled": true,
@@ -14,8 +15,50 @@
 			"Legs": 65
 		}
 	},
-	"DontAffectFollowingBots": [
-		"Add Bot Here",
-		"Add Bot Here"
-	]
+	"OverwriteBots": {
+		"example": {
+			"DontAffect": true,
+			"RemoveCheatySkills": {
+				"BotSound": false,
+				"BotReload": true,
+				"EternityStamina": true
+			},
+			"ChangeHealth": {
+				"Enabled": false,
+				"HealthValues": {
+					"Head": 1000,
+					"Thorax": 999,
+					"Stomach": 69,
+					"Arms": 96,
+					"Legs": 2
+				}
+			}
+		},
+		"sectantpriest": {
+			"RemoveCheatySkills": {
+				"BotSound": false
+			}
+		},
+		"sectantwarrior": {
+			"RemoveCheatySkills": {
+				"BotSound": false
+			}
+		},
+		"bossgluhar": {
+			"ChangeHealth": {
+				"HealthValues": {
+					"Thorax": 220,
+					"Stomach": 140
+				}
+			}
+		},
+		"bosskojaniy": {
+			"ChangeHealth": {
+				"HealthValues": {
+					"Thorax": 180,
+					"Stomach": 150
+				}
+			}
+		}
+	}
 }

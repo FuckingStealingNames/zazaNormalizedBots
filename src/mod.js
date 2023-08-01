@@ -4,38 +4,75 @@ class Mod {
 	postDBLoad(container) {
 		// constants
 		const logger = container.resolve("WinstonLogger");
+		const jsonUtil = container.resolve("JsonUtil")
 		const database = container.resolve("DatabaseServer").getTables();
 		const dbBots = database.bots.types;
 		
 		const config = require("../config/config.json");
 		
+		let botEntries = {};
+		
 		for (const botType in dbBots) {
-			// if bot type is in the "Dont Affect" list, drop it
-			if (config.DontAffectFollowingBots.includes(botType)) {
-				continue;
+			// get the config values
+			botEntries[botType] = {};
+			
+			botEntries[botType].RemoveCheatySkills = jsonUtil.clone(config.RemoveCheatySkills);
+			botEntries[botType].ChangeHealth = jsonUtil.clone(config.ChangeHealth);
+			
+			const removeSkills = botEntries[botType].RemoveCheatySkills;
+			const changeHealth = botEntries[botType].ChangeHealth;
+			
+			// handle overwrites
+			if (config.OverwriteBots[botType]) {
+				
+				// skip if it has dont affect entry
+				if (config.OverwriteBots[botType].DontAffect) {
+					continue;
+				}
+				
+				// replace config values
+				// skills
+				if (config.OverwriteBots[botType].RemoveCheatySkills) {
+					for (const skillsEntry in config.OverwriteBots[botType].RemoveCheatySkills) {
+						removeSkills[skillsEntry] = config.OverwriteBots[botType].RemoveCheatySkills[skillsEntry];
+					}
+				}
+				
+				// health
+				if (config.OverwriteBots[botType].ChangeHealth) {
+					if (config.OverwriteBots[botType].ChangeHealth.Enabled !== undefined) {
+						changeHealth.Enabled = config.OverwriteBots[botType].ChangeHealth.Enabled;
+					}
+					
+					if (config.OverwriteBots[botType].ChangeHealth.HealthValues) {
+						for (const healthEntry in config.OverwriteBots[botType].ChangeHealth.HealthValues) {
+							changeHealth.HealthValues[healthEntry] = config.OverwriteBots[botType].ChangeHealth.HealthValues[healthEntry];
+						}
+					}
+				}
 			}
 			
+			//logger.info(botType)
+			
 			// change health
-			if (config.ChangeHealth.Enabled) {
-				Mod.changeHealth(dbBots, botType, config.ChangeHealth.HealthValues);
+			if (changeHealth.Enabled) {
+				Mod.changeHealth(dbBots, botType, changeHealth.HealthValues);
 			}
 			
 			// remove instant bot reload & infinite stamina & silent movement
-			if (config.AffectCheatySkills.Enabled) {
-				// skills
+			if (removeSkills.BotSound) {
+				if (dbBots[botType].skills.Common) {
+					dbBots[botType].skills.Common.BotSound = {"min": 0, "max": 0};
+				}
+			}
+			
+			if (removeSkills.BotReload) {
 				if (dbBots[botType].skills.Common) {
 					dbBots[botType].skills.Common.BotReload = {"min": 0, "max": 0};
-						
-					if (botType === "sectantpriest" || botType ===  "sectantwarrior") {
-						if (config.AffectCheatySkills.CultistsHaveSiletMovement === false) {
-							dbBots[botType].skills.Common.BotSound = {"min": 0, "max": 0};
-						}
-					} else {
-						dbBots[botType].skills.Common.BotSound = {"min": 0, "max": 0};
-					}
 				}
+			}
 			
-				// stamina
+			if (removeSkills.EternityStamina) {
 				if (dbBots[botType].difficulty) {
 					for (const difficulty in dbBots[botType].difficulty) {
 						if (dbBots[botType].difficulty[difficulty].Move) {
@@ -86,22 +123,6 @@ class Mod {
 					}
 				}
 			]
-	
-			// gluhkar
-			if (botType === "bossgluhar") {
-	
-				//change chest and stomach HP cuz character mesh has armor vest on it
-				dbBots[botType].health.BodyParts[0].Chest =	{"min": 220, "max": 220};
-				dbBots[botType].health.BodyParts[0].Stomach = {"min": 140, "max": 140};
-			}
-	
-			// shturman
-			if (botType === "bosskojaniy") {
-	
-				//change chest and stomach HP cuz character mesh has armor vest on it
-				dbBots[botType].health.BodyParts[0].Chest =	{"min": 180, "max": 180};
-				dbBots[botType].health.BodyParts[0].Stomach = {"min": 150, "max": 150};
-			}
 		}
 	}
 
