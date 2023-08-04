@@ -16,10 +16,9 @@ class Mod {
 		
 		for (const botType in dbBots) {
 			// get the config values to each bot
-			botSettings[botType] = {};
 			botSettings[botType] = jsonUtil.clone(config.MainSettings);
 			
-			const personalConfig = botSettings[botType]
+			const personalConfig = botSettings[botType];
 			
 			// handle overwrites
 			if (config.OverwriteBots[botType]) {
@@ -92,9 +91,35 @@ class Mod {
 				const chances = dbBots[botType].chances;
 				
 				if (VFS.exists(`${modPath}\\db\\bots\\${botType}.json`)) {
-				
+					const botFile = require(`${modPath}\\db\\bots\\${botType}.json`);
+					
+					// add gear
+					for (const equipmentCategory in botFile.inventory.equipment) {
+						for (const itemToAdd in botFile.inventory.equipment[equipmentCategory]) {
+							if (!inv.equipment[equipmentCategory][itemToAdd]) {
+								inv.equipment[equipmentCategory][itemToAdd] = botFile.inventory.equipment[equipmentCategory][itemToAdd];
+							}
+						}
+					}
+					
+					// add mods
+					for (const modItem in botFile.inventory.mods) {
+						if(!inv.mods[modItem]) {
+							inv.mods[modItem] = botFile.inventory.mods[modItem];
+						}
+					}
+					
+					// replace chances
+					for (const chanceCat in botFile.chances) {
+						for (const itemChance in botFile.chances[chanceCat]) {
+							if (chances[chanceCat][itemChance] === 0 || chances[chanceCat][itemChance] === undefined) {
+								chances[chanceCat][itemChance] = botFile.chances[chanceCat][itemChance];
+							}
+						}
+					}
 				}
 			}
+			
 		}
 	}
 
