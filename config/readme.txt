@@ -26,3 +26,7 @@ LISTED VALID NAMES TO MODIFY BOTS:
 PMCS:
 bear
 usec
+
+SCAVS:
+pmcbot (RAIDERS)
+assault (NORMAL SCAVS)
