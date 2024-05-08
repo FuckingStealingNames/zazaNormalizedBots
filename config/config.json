@@ -16,18 +16,20 @@
 			}
 		}	
 	},
+	
+	
 	"OverwriteBots": {
-		"example": {
-			"DontAffect": true,
+		"assault": {
+			"DontAffect": false,
 			"RemoveCheatySkills": {
-				"BotSound": false,
+				"BotSound": true,
 				"BotReload": true,
 				"EternityStamina": true
 			},
 			"ChangeHealth": {
 				"Enabled": false,
 				"HealthValues": {
-					"Head": 1000,
+					"Head": 1,
 					"Thorax": 999,
 					"Stomach": 69,
 					"Arms": 96,
@@ -35,31 +37,16 @@
 				}
 			}
 		},
-		"sectantpriest": {
-			"RemoveCheatySkills": {
-				"BotSound": false
-			}
-		},
-		"sectantwarrior": {
-			"RemoveCheatySkills": {
-				"BotSound": false
-			}
-		},
-		"bossgluhar": {
+		"bear": {
 			"ChangeHealth": {
+				"Enabled": false,
 				"HealthValues": {
-					"Thorax": 220,
-					"Stomach": 140
-				}
-			}
-		},
-		"bosskojaniy": {
-			"ChangeHealth": {
-				"HealthValues": {
-					"Thorax": 180,
-					"Stomach": 150
-				}
-			}
-		}
-	}
+					"Head": 1,
+					"Thorax": 2,
+					"Stomach": 3,
+					"Arms": 96,
+					"Legs": 2
+			}		
+	}   } 
+}
 }
