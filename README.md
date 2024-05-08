@@ -1,2 +1,2 @@
 # Normalised Bots
-Makes bots a bit more fair by giving them the same health as player (with optional gear change to accommodate lower health) and removing some OP skills.
+Making bots less tanky with customized HP and removes their cheat perks
