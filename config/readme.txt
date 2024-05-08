@@ -28,5 +28,5 @@ bear
 usec
 
 SCAVS:
-pmcbot (RAIDERS)
+pmcbot (RAIDERS) [DOESN'T BEHAVE WELL?]
 assault (NORMAL SCAVS)
