@@ -30,3 +30,8 @@ usec
 SCAVS:
 pmcbot (RAIDERS) [DOESN'T BEHAVE WELL?]
 assault (NORMAL SCAVS)
+
+GOONS:
+bossknight
+followerbigpipe
+fllowerbirdeye
