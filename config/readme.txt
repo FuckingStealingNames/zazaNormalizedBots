@@ -18,3 +18,11 @@ OverwriteBots					OVERWRITES MAIN SETTINGS FOR SPECIFIC BOT
 		"Legs": 2
 	}
 }
+
+
+
+------------------
+LISTED VALID NAMES TO MODIFY BOTS:
+PMCS:
+bear
+usec
