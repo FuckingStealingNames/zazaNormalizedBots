@@ -34,4 +34,4 @@ assault (NORMAL SCAVS)
 GOONS:
 bossknight
 followerbigpipe
-fllowerbirdeye
+followerbirdeye
