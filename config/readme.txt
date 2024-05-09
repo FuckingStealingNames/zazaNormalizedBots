@@ -35,3 +35,7 @@ GOONS:
 bossknight
 followerbigpipe
 followerbirdeye
+
+RESHALA:
+bossbully
+followerbully (BODYGUARDS)
