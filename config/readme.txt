@@ -23,9 +23,11 @@ OverwriteBots					OVERWRITES MAIN SETTINGS FOR SPECIFIC BOT
 
 ------------------
 LISTED VALID NAMES TO MODIFY BOTS:
+
 PMCS:
 bear
 usec
+exusec (ROGUES)
 
 SCAVS:
 pmcbot (RAIDERS) [DOESN'T BEHAVE WELL?]
@@ -39,3 +41,7 @@ followerbirdeye
 RESHALA:
 bossbully
 followerbully (BODYGUARDS)
+
+ZRYACHIY:
+bosszryachiy
+followerzryachiy
