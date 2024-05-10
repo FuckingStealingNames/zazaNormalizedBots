@@ -32,6 +32,7 @@ exusec (ROGUES)
 SCAVS:
 pmcbot (RAIDERS) [DOESN'T BEHAVE WELL?]
 assault (NORMAL SCAVS)
+marksman (SNIPERS)
 
 GOONS:
 bossknight
@@ -42,6 +43,8 @@ RESHALA:
 bossbully
 followerbully (BODYGUARDS)
 
-ZRYACHIY:
-bosszryachiy
-followerzryachiy
+SHTURMAN:
+bosskojaniy
+followerkojaniy (BODYGUARDS)
+
+
