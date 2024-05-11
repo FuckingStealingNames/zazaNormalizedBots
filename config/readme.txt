@@ -64,3 +64,11 @@ followergluharsnipe
 
 KILLA:
 bosskilla
+
+KOLLONTAY:
+bosskolontay
+followerkolontayassault (ROAMERS)
+followerkolontaysecurity (BODYGUARDS)
+
+
+
