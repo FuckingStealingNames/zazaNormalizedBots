@@ -47,4 +47,7 @@ SHTURMAN:
 bosskojaniy
 followerkojaniy (BODYGUARDS)
 
+ZRYACHIY:
+bosszryachiy
+followerzryachiy (BACKUP FOLLOWERS)
 
