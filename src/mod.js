@@ -49,12 +49,6 @@ class Mod {
 						}
 					}
 				}
-				
-				// add more gear
-				if (overwriteConfig.AddMoreGear !== undefined) {
-					personalConfig.AddMoreGear = overwriteConfig.AddMoreGear;
-					
-				}
 			}
 			
 			// change health
