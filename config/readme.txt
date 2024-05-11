@@ -55,3 +55,12 @@ SANITAR:
 bosssanitar
 followersanitar (BODYGUARDS)
 
+GLUKHAR:
+bossgluhar
+followergluharassault
+followergluharscout
+followergluharsecurity
+followergluharsnipe
+
+KILLA:
+bosskilla
