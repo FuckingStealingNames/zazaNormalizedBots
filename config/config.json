@@ -19,7 +19,7 @@
 	
 	
 	"OverwriteBots": {
-		"assault": {
+		"EXAMPLE": {
 			"DontAffect": false,
 			"RemoveCheatySkills": {
 				"BotSound": true,
@@ -30,23 +30,36 @@
 				"Enabled": false,
 				"HealthValues": {
 					"Head": 1,
-					"Thorax": 999,
-					"Stomach": 69,
-					"Arms": 96,
-					"Legs": 2
+					"Thorax": 1,
+					"Stomach": 1,
+					"Arms": 1,
+					"Legs": 1
 				}
 			}
 		},
-		"bear": {
-			"ChangeHealth": {
-				"Enabled": false,
-				"HealthValues": {
-					"Head": 1,
-					"Thorax": 2,
-					"Stomach": 3,
-					"Arms": 96,
-					"Legs": 2
-			}		
-	}   } 
-}
-}
+           		"EXAMPLE": {
+     		    	"ChangeHealth": {
+				    "Enabled": false,
+    				"HealthValues": {
+		     			"Head": 2,
+			    		"Thorax": 2,
+			    		"Stomach": 2,
+				    	"Arms": 2,
+			    		"Legs": 2
+			        }		
+	            } 
+			},
+           		"EXAMPLE": {
+     		    	"ChangeHealth": {
+				    "Enabled": false,
+    				"HealthValues": {
+		     			"Head": 3,
+			    		"Thorax": 3,
+			    		"Stomach": 3,
+				    	"Arms": 3,
+			    		"Legs": 3
+			        }		
+	            } 
+			}
+	    }
+    }
