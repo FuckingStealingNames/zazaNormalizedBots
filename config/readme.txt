@@ -51,3 +51,7 @@ ZRYACHIY:
 bosszryachiy
 followerzryachiy (BACKUP FOLLOWERS)
 
+SANITAR:
+bosssanitar
+followersanitar (BODYGUARDS)
+
