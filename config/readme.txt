@@ -70,5 +70,8 @@ bosskolontay
 followerkolontayassault (ROAMERS)
 followerkolontaysecurity (BODYGUARDS)
 
-
-
+KABAN:
+bossboar
+followerboarclose1
+followerboarclose2
+followerboar
